@@ -1,5 +1,9 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Threading.Tasks;
+using Covid.NET;
+using Covid.NET.Models;
 using Xunit;
+using Xunit.Abstractions;
+using Xunit.Sdk;
 
 namespace Covid.NET.Tests
 {
@@ -10,6 +14,7 @@ namespace Covid.NET.Tests
         {
             // idk how to unit test this yet so its blank
             Assert.True(true);
+            
         }
 
         [Fact]
@@ -27,4 +32,3 @@ namespace Covid.NET.Tests
         }
     }
 }
-

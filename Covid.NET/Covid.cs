@@ -30,7 +30,7 @@ namespace Covid.NET
         {
             string resp = await m_Client.GetStringAsync(m_CountryDataEndpoint);
 
-            return JsonConvert.DeserializeObject<List<CountryData>>(resp);
+            return JsonConvert.DeserializeObject<IEnumerable<CountryData>>(resp);
         }
     }
 }
