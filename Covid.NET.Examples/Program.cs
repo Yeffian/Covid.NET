@@ -14,7 +14,7 @@ namespace Covid.NET.Examples
             Console.WriteLine($"Recovered: {globalData.Recovered}");
             
             // Get data about a specific country
-            CountryData countryData = await Covid.GetCountryData("Bangladesh");
+            CountryData? countryData = await Covid.GetCountryData("Bangladesh");
             
             Console.WriteLine($"Cases: {countryData.Cases}");
             Console.WriteLine($"Deaths: {countryData.Deaths}");
