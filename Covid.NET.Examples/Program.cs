@@ -1,40 +1,41 @@
-﻿using Covid.NET.Models;
+﻿using Covid.Models;
 
-namespace Covid.NET.Examples
+namespace Covid.Examples;
+
+public static class Program
 {
-    public class Program
-    {
-        public static async Task<int> Main(string[] args)
-        { 
-            // Get global data 
-            GlobalData globalData = await Covid.GetGlobalData();
-            
-            Console.WriteLine($"Cases: {globalData.Cases}");
-            Console.WriteLine($"Deaths: {globalData.Deaths}");
-            Console.WriteLine($"Recovered: {globalData.Recovered}");
-            
-            // Get data about a specific country
-            CountryData? countryData = await Covid.GetCountryData("Bangladesh");
-            
-            Console.WriteLine($"Cases: {countryData.Cases}");
-            Console.WriteLine($"Deaths: {countryData.Deaths}");
-            Console.WriteLine($"Recovered: {countryData.Recovered}");
-            
-            
-            // Get data about all the countries the library supports
-            IEnumerable<CountryData> allCountriesData = await Covid.GetAllCountriesData();
+    public static async Task<int> Main()
+    { 
+        // Get global data 
+        GlobalData globalData = await Covid.GetGlobalData() ?? throw new Exception("unable to get global data");
 
-            foreach (CountryData c in allCountriesData)
-            {
-                Console.WriteLine($"------------------------ {c.Country} -----------------------");
-                Console.WriteLine($"Cases: {c.Cases}");
-                Console.WriteLine($"Deaths: {c.Deaths}");
-                Console.WriteLine($"Recovered: {c.Recovered}");
-                Console.WriteLine($"----------------------------------------------------------");
-            }
+        Console.WriteLine("------------------------ GLOBAL DATA -----------------------");
+        Console.WriteLine($"Cases: {globalData.Cases}");
+        Console.WriteLine($"Deaths: {globalData.Deaths}");
+        Console.WriteLine($"Recovered: {globalData.Recovered}");
+        Console.WriteLine();
+            
+        // Get data about a specific country
+        // CountryData countryData = await Covid.GetCountryData("Bangladesh") ?? throw new Exception("unable to get country data");
+        CountryData countryData = await Covid.GetCountryData("USA") ?? throw new Exception("unable to get country data");
+        
+        Console.WriteLine($"------------------------ {countryData.Country} -----------------------");
+        Console.WriteLine($"Cases: {countryData.Cases}");
+        Console.WriteLine($"Deaths: {countryData.Deaths}");
+        Console.WriteLine($"Recovered: {countryData.Recovered}");
+        Console.WriteLine();
+            
+        // Get data about all the countries the library supports
+        IEnumerable<CountryData> allCountriesData = await Covid.GetAllCountriesData() ?? throw new Exception("unable to get all countries data");
 
-            return 0;
+        foreach (CountryData c in allCountriesData)
+        {
+            Console.WriteLine($"------------------------ {c.Country} -----------------------");
+            Console.WriteLine($"Cases: {c.Cases}");
+            Console.WriteLine($"Deaths: {c.Deaths}");
+            Console.WriteLine($"Recovered: {c.Recovered}");
         }
+
+        return 0;
     }
 }
-
