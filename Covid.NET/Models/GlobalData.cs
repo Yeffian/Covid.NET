@@ -19,15 +19,4 @@ public class GlobalData
 
     [JsonPropertyName("recovered"), JsonIgnore(Condition = JsonIgnoreCondition.Never)]
     public int? Recovered { get; init; }
-    
-    [JsonIgnore]
-    private string DebuggerDisplay
-    {
-        get
-        {
-            using var stream = new MemoryStream();
-            JsonSerializer.Serialize(stream, this, new JsonSerializerOptions{WriteIndented = true});
-            return Encoding.UTF8.GetString(stream.ToArray());
-        }
-    }
 }

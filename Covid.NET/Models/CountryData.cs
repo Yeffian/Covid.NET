@@ -46,15 +46,4 @@ public class CountryData
 
     [JsonPropertyName("testsPerOneMillion"), JsonIgnore(Condition = JsonIgnoreCondition.Never)]
     public int? TestsPerOneMillion { get; init; }
-
-    [JsonIgnore]
-    private string DebuggerDisplay
-    {
-        get
-        {
-            using var stream = new MemoryStream();
-            JsonSerializer.Serialize(stream, this, new JsonSerializerOptions{WriteIndented = true});
-            return Encoding.UTF8.GetString(stream.ToArray());
-        }
-    }
 }

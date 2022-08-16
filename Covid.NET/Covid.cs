@@ -6,17 +6,9 @@ using System.Text.Json;
 
 public static class Covid
 {
-    private static readonly HttpClient s_client = new();
-    private static readonly Encoding s_encoding = new UTF8Encoding(false, true);
-    private static readonly JsonSerializerOptions s_options = new()
-    {
-        // If we're in release there's no reason to write indented, otherwise we'll want to see the content in debug
-#if DEBUG
-        WriteIndented = true,
-#elif RELEASE
-        WriteIntended = false,
-#endif
-    };
+    private static readonly HttpClient _client = new();
+    private static readonly Encoding _encoding = new UTF8Encoding(false, true);
+
 
     public static async Task<GlobalData?> GetGlobalData()
     {
@@ -35,7 +27,7 @@ public static class Covid
     
     private static async Task<T?> GetAsync<T>(string endpoint)
     {
-        var response = await s_client.GetAsync(endpoint);
+        var response = await _client.GetAsync(endpoint);
         if (!response.IsSuccessStatusCode)
         {
             return default;
@@ -44,8 +36,8 @@ public static class Covid
         try
         {
             var data = await response.Content.ReadAsStringAsync();
-            await using var stream = new MemoryStream(s_encoding.GetBytes(data));
-            return await JsonSerializer.DeserializeAsync<T>(stream, s_options, CancellationToken.None);
+            await using var stream = new MemoryStream(_encoding.GetBytes(data));
+            return await JsonSerializer.DeserializeAsync<T>(stream);
         }
         catch (Exception e)
         {
