@@ -9,6 +9,9 @@
         <PackageId>Covid.NET</PackageId>
         <Version>1.0.0</Version>
         <Authors>YeffyCodeGit</Authors>
-        <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+        <Description>A C# library to get information about global stats of Covid-19.</Description>
+        <RepositoryUrl>https://github.com/YeffyCodeGit/Covid.NET</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/YeffyCodeGit/Covid.NET</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 </Project>
