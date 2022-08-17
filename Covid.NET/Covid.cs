@@ -10,17 +10,17 @@ public static class Covid
     private static readonly Encoding _encoding = new UTF8Encoding(false, true);
 
 
-    public static async Task<GlobalData?> GetGlobalData()
+    public static async Task<GlobalData?> GetGlobalDataAsync()
     {
         return await GetAsync<GlobalData>(Endpoints.GlobalDataEndpoint);
     }
 
-    public static async Task<CountryData?> GetCountryData(string country)
+    public static async Task<CountryData?> GetCountryDataAsync(string country)
     {
         return await GetAsync<CountryData>(Endpoints.GetCountryDataEndpoint(country));
     }
 
-    public static async Task<IEnumerable<CountryData>?> GetAllCountriesData()
+    public static async Task<IEnumerable<CountryData>?> GetAllCountriesDataAsync()
     {
         return await GetAsync<IEnumerable<CountryData>>(Endpoints.CountryDataEndpoint);
     }
