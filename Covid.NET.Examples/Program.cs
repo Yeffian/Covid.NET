@@ -7,7 +7,7 @@ public static class Program
     public static async Task<int> Main()
     { 
         // Get global data 
-        GlobalData globalData = await Covid.GetGlobalDataAsync() ?? throw new Exception("unable to get global data");
+        GlobalData globalData = await CovidData.GetGlobalDataAsync() ?? throw new Exception("unable to get global data");
 
         Console.WriteLine("------------------------ GLOBAL DATA -----------------------");
         Console.WriteLine($"Cases: {globalData.Cases}");
@@ -17,7 +17,7 @@ public static class Program
             
         // Get data about a specific country
         // CountryData countryData = await Covid.GetCountryData("Bangladesh") ?? throw new Exception("unable to get country data");
-        CountryData countryData = await Covid.GetCountryDataAsync("USA") ?? throw new Exception("unable to get country data");
+        CountryData countryData = await CovidData.GetCountryDataAsync("USA") ?? throw new Exception("unable to get country data");
         
         Console.WriteLine($"------------------------ {countryData.Country} -----------------------");
         Console.WriteLine($"Cases: {countryData.Cases}");
@@ -26,7 +26,7 @@ public static class Program
         Console.WriteLine();
             
         // Get data about all the countries the library supports
-        IEnumerable<CountryData> allCountriesData = await Covid.GetAllCountriesDataAsync() ?? throw new Exception("unable to get all countries data");
+        IEnumerable<CountryData> allCountriesData = await CovidData.GetAllCountriesDataAsync() ?? throw new Exception("unable to get all countries data");
 
         foreach (CountryData c in allCountriesData)
         {

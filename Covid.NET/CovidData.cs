@@ -4,7 +4,7 @@ using Models;
 using System.Text;
 using System.Text.Json;
 
-public static class Covid
+public static class CovidData
 {
     private static readonly HttpClient _client = new();
     private static readonly Encoding _encoding = new UTF8Encoding(false, true);

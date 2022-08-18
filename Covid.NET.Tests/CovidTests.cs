@@ -8,7 +8,7 @@ public class CovidTests
     [Fact]
     public async Task Test_GlobalData()
     {
-        var globalData = await Covid.GetGlobalDataAsync();
+        var globalData = await CovidData.GetGlobalDataAsync();
         
         Assert.NotNull(globalData);
 
@@ -26,7 +26,7 @@ public class CovidTests
     [Fact]
     public async Task Test_CountryData()
     {
-        var countryData = await Covid.GetCountryDataAsync("Bangladesh");
+        var countryData = await CovidData.GetCountryDataAsync("Bangladesh");
 
         Assert.NotNull(countryData);
         
@@ -44,7 +44,7 @@ public class CovidTests
     [Fact]
     public async Task Test_AllCountriesData()
     {
-        var allCountriesData = await Covid.GetAllCountriesDataAsync();
+        var allCountriesData = await CovidData.GetAllCountriesDataAsync();
 
         Assert.NotNull(allCountriesData);
 
